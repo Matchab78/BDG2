@@ -1,0 +1,42 @@
+/* Appliquer un fond noir à toute la page et du texte blanc */
+body {
+    background-color: #000000;
+    color: #ffffff;
+    margin: 0;
+    padding-top: 80px; /* Crée de l'espace sous la navbar */
+}
+
+/* Espacement spécifique pour la navbar */
+.navbar {
+    margin-bottom: 60px; /* Espace entre la navbar et le tableau */
+}
+
+/* Styliser le tableau pour un rendu clair sur fond noir */
+.table {
+    border-collapse: collapse;
+    width: 80%; /* Ajustez la largeur du tableau si nécessaire */
+    margin: 50px auto; /* Centre horizontalement et espace au-dessus/au-dessous */
+    background-color: #ffffff; /* Fond du tableau */
+    color: #fff;
+    border: 1px solid #444; /* Bordure des cellules */
+}
+
+.table th, .table td {
+    padding: 12px;
+    text-align: left;
+    border: 1px solid #ffffff; /* Bordures des cellules */
+}
+
+.table th {
+    background-color: #333; /* Fond des en-têtes */
+    color: #fff;
+}
+
+.table a {
+    color: #1e90ff; /* Couleur des liens */
+    text-decoration: none;
+}
+
+.table a:hover {
+    text-decoration: underline;
+}

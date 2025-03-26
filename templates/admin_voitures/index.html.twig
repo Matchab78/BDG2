@@ -1,0 +1,60 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Voitures index{% endblock %}
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/adminpage.css') }}">
+{% endblock %}
+    
+{% block body %}
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>PrixV</th>
+                <th>Stock</th>
+                <th>Description</th>
+                <th>Vitesse</th>
+                <th>Acceleration</th>
+                <th>Image</th>
+                <th>Annee</th>
+                <th>Chevaux</th>
+                <th>Moteur</th>
+                <th>Carburant</th>
+                <th>BoiteAuto</th>
+                <th>Conso</th>
+                <th>Co2</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for voiture in voitures %}
+            <tr>
+                <td>{{ voiture.id }}</td>
+                <td>{{ voiture.prixV }}</td>
+                <td>{{ voiture.stock }}</td>
+                <td>{{ voiture.description }}</td>
+                <td>{{ voiture.vitesse }}</td>
+                <td>{{ voiture.acceleration }}</td>
+                <td>{{ voiture.image }}</td>
+                <td>{{ voiture.annee }}</td>
+                <td>{{ voiture.chevaux }}</td>
+                <td>{{ voiture.moteur }}</td>
+                <td>{{ voiture.carburant }}</td>
+                <td>{{ voiture.boiteAuto }}</td>
+                <td>{{ voiture.conso }}</td>
+                <td>{{ voiture.Co2 }}</td>
+                <td>
+                    <a href="{{ path('app_admin_voitures_show', {'id': voiture.id}) }}">montrer</a>
+                    <a href="{{ path('app_admin_voitures_edit', {'id': voiture.id}) }}">modifier</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="15">rien trouver</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_admin_voitures_new') }}">Crée une voiture</a>
+{% endblock %}

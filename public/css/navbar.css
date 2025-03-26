@@ -1,0 +1,145 @@
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 0 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 80px;
+    z-index: 1000;
+    background-color: transparent; /* Supprime le fond noir */
+}
+
+
+/* .navbar-transparent {
+    background-color: transparent !important;
+} */
+
+.logo-img {
+    height: 200%;
+    max-height: 150px;
+    width: auto;
+}
+
+
+.nav-links {
+    display: flex;
+    flex: 1;
+    justify-content: center;
+    gap: 60px;
+}
+
+.nav-item {
+    color: gold;
+    text-decoration: none;
+    font-size: 14px;
+    letter-spacing: 1px;
+    position: relative;
+    transition: color 0.3s;
+    text-align: center;
+}
+
+.nav-item:hover {
+    color: gold;
+}
+
+.nav-item::after {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 2px;
+    background-color: gold;
+    left: 0;
+    bottom: -5px;
+    transition: width 0.3s;
+}
+
+.nav-item:hover::after {
+    width: 100%;
+}
+
+.menu-toggle {
+    display: block;
+    cursor: pointer;
+    z-index: 1001;
+    width: 22px;
+    height: 18px;
+    position: relative;
+}
+
+.bar {
+    width: 100%;
+    height: 2px;
+    background-color: gold;
+    position: absolute;
+    left: 0;
+    transition: all 0.3s ease-in-out;
+}
+
+.bar:nth-child(1) {
+    top: 0;
+}
+
+.bar:nth-child(2) {
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.bar:nth-child(3) {
+    bottom: 0;
+}
+
+/* Animation pour la transformation en croix */
+.menu-toggle.active .bar:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+}
+
+.menu-toggle.active .bar:nth-child(2) {
+    opacity: 0;
+}
+
+.menu-toggle.active .bar:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+}
+
+.dropdown-menu {
+    display: none;
+    position: fixed;
+    top: 80px;
+    left: 0;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.95);
+    padding: 20px;
+    text-align: center;
+    transform: translateY(-10px);
+    opacity: 0;
+    transition: all 0.3s ease-in-out;
+}
+
+.dropdown-menu.show {
+    display: block;
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.dropdown-item {
+    display: block;
+    padding: 15px;
+    color: gold;
+    text-decoration: none;
+    transition: background-color 0.3s;
+    font-size: 18px;
+    margin: 10px 0;
+}
+
+.dropdown-item:hover {
+    background-color: rgba(255, 215, 0, 0.1);
+}
+
+@media (max-width: 768px) {
+    .nav-links {
+        display: none;
+    }
+}

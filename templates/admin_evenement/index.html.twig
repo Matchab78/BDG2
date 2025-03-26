@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Evenement index{% endblock %}
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/editadminpage.css') }}">
+{% endblock %}
+{% block body %}
+    <h1>Evenement index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Description</th>
+                <th>Ville</th>
+                <th>Rue</th>
+                <th>Cp</th>
+                <th>DateEvent</th>
+                <th>Places</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for evenement in evenements %}
+            <tr>
+                <td>{{ evenement.id }}</td>
+                <td>{{ evenement.description }}</td>
+                <td>{{ evenement.ville }}</td>
+                <td>{{ evenement.rue }}</td>
+                <td>{{ evenement.cp }}</td>
+                <td>{{ evenement.dateEvent ? evenement.dateEvent|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ evenement.places }}</td>
+                <td>
+                    <a href="{{ path('app_admin_evenement_show', {'id': evenement.id}) }}">montrer</a>
+                    <a href="{{ path('app_admin_evenement_edit', {'id': evenement.id}) }}">modifier</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="8">rien trouver</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_admin_evenement_new') }}">Crée un évenement</a>
+{% endblock %}

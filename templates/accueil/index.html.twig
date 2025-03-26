@@ -1,0 +1,75 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Accueil{% endblock %}
+
+{% block stylesheets %}
+<link rel="stylesheet" href="{{asset('css/acc.css')}}">
+{% endblock %}
+
+{% block body %}
+<section>
+<div class="image-container">
+    <div class="image-box">
+        <img width="100%" src="{{ asset('css/images/imgacc.png') }}" alt="Image 1">
+    </div>
+</div>
+</section>
+{% for voiture in voitures[:4] %}
+<section class="voit">
+        <div class="widget row">
+        <div class="col-2"></div>
+            {% if loop.index is odd %}
+                <div class="col-4">
+                    <div>
+                        <p class="nouveaute">Nouveauté</p>
+                    </div>
+
+                    <div class="titre">
+                        <h1>{{ voiture.description }}</h1>
+                    </div>
+                    
+                    <div class="description">
+                        <p>Venez découvrir plus en détail la voiture.</p>
+                    </div>
+
+                    <div class="link">
+                        <a href="{{ path('detailVoit', {'id': voiture.id}) }}" class="">Learn More</a>
+                    </div>
+                </div>
+
+                <div class="col-4" style="overflow:hidden">
+                    <img width="100%" src="{{ asset(  voiture.image  ) }}" alt="Image 1">
+                </div>
+            {% else %}
+                <div class="col-4" style="overflow:hidden">
+                    <img width="100%" src="{{ asset( voiture.image ) }}" alt="Image 1">
+                </div>
+
+                <div class="col-4">
+                    <div>
+                        <p class="nouveaute">Nouveauté</p>
+                    </div>
+
+                    <div class="titre">
+                        <h1>{{ voiture.description }}</h1>
+                    </div>
+                    
+                    <div class="description">
+                        <p>Venez découvrir plus en détail la voiture.</p>
+                    </div>
+
+                    <div class="link">
+                        <a href="{{ path('detailVoit', {'id': voiture.id}) }}" class="">Learn More</a>
+                    </div>
+                </div>
+            {% endif %}
+            <div class="col-2"></div>
+
+        </div>
+
+</section>
+    {% endfor %}
+
+<script src="{{asset('script/fullpage.js')}}"></script>
+
+{% endblock %}

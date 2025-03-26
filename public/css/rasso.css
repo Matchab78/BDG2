@@ -1,0 +1,80 @@
+/* Section principale */
+.event-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    padding: 20px;
+}
+
+/* Carte événement */
+.event-card {
+    background: #111;
+    color: gold;
+    border-radius: 10px;
+    padding: 20px;
+    width: 350px;
+    box-shadow: 0 4px 8px rgba(255, 215, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid gold;
+}
+
+/* Effet au survol */
+.event-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(255, 215, 0, 0.4);
+}
+
+/* Titres et textes */
+h2 {
+    text-align: center;
+    font-size: 24px;
+    color: gold;
+    margin-bottom: 20px;
+}
+
+.event-card h3 {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.event-card p {
+    font-size: 16px;
+    margin: 5px 0;
+}
+
+/* Style des labels */
+.event-card p strong {
+    color: white;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .event-list {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .event-card {
+        width: 90%;
+    }
+}
+
+.btn-participer {
+    background-color: gold;
+    color: black;
+    border: none;
+    padding: 10px 15px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 10px;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+    width: 100%;
+    text-align: center;
+}
+
+.btn-participer:hover {
+    background-color: darkgoldenrod;
+}

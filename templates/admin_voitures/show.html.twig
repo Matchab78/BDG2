@@ -1,0 +1,76 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Voitures{% endblock %}
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/adminpage.css') }}">
+{% endblock %}
+{% block body %}
+    <h1>Voitures</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ voiture.id }}</td>
+            </tr>
+            <tr>
+                <th>PrixV</th>
+                <td>{{ voiture.prixV }}</td>
+            </tr>
+            <tr>
+                <th>Stock</th>
+                <td>{{ voiture.stock }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ voiture.description }}</td>
+            </tr>
+            <tr>
+                <th>Vitesse</th>
+                <td>{{ voiture.vitesse }}</td>
+            </tr>
+            <tr>
+                <th>Acceleration</th>
+                <td>{{ voiture.acceleration }}</td>
+            </tr>
+            <tr>
+                <th>Image</th>
+                <td>{{ voiture.image }}</td>
+            </tr>
+            <tr>
+                <th>Annee</th>
+                <td>{{ voiture.annee }}</td>
+            </tr>
+            <tr>
+                <th>Chevaux</th>
+                <td>{{ voiture.chevaux }}</td>
+            </tr>
+            <tr>
+                <th>Moteur</th>
+                <td>{{ voiture.moteur }}</td>
+            </tr>
+            <tr>
+                <th>Carburant</th>
+                <td>{{ voiture.carburant }}</td>
+            </tr>
+            <tr>
+                <th>BoiteAuto</th>
+                <td>{{ voiture.boiteAuto }}</td>
+            </tr>
+            <tr>
+                <th>Conso</th>
+                <td>{{ voiture.conso }}</td>
+            </tr>
+            <tr>
+                <th>Co2</th>
+                <td>{{ voiture.Co2 }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_admin_voitures_index') }}">retour à la liste</a>
+
+    <a href="{{ path('app_admin_voitures_edit', {'id': voiture.id}) }}">modifier</a>
+
+    {{ include('admin_voitures/_delete_form.html.twig') }}
+{% endblock %}

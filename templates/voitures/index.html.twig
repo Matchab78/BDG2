@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Catalogue{% endblock %}
+
+{% block body %}
+
+{% block stylesheets %}
+<link rel="stylesheet" href="{{asset('css/catalogue.css')}}">
+{% endblock %}
+
+<div class="search-container">
+    <input type="text" id="search-bar" placeholder="Rechercher une voiture..." onkeyup="filterCards()">
+</div>
+
+{% for voiture in voitures %}
+<div class="card">
+    <h2>{{ voiture.description }}</h2>
+    <img src="{{ asset(  voiture.image  ) }}" alt="Car Image"> {# il faut au plus vite ajouter les vrai image #} 
+    <div class="progress-bar">
+        <div style="width: 45%;"></div>
+    </div>
+    <p>Speed: {{ voiture.vitesse }} KM/H</p>
+    <div class="progress-bar">
+        <div style="width: 80%;"></div>
+    </div>
+    <p>Horsepower: {{ voiture.chevaux }} CHV</p>
+    <a href="{{ path('detailVoit', {'id': voiture.id}) }}" class="button" style="text-decoration: none;">Learn More</a>
+</div>
+{% endfor %}
+
+<script>
+
+//Laisser les commentaire c pour comprendre comment fonctionne la barre de recherche
+/**
+ * Filters the displayed cards based on the search input.
+ * @param {string} searchInput the search input string
+ */
+function filterCards() {
+    const searchInput = document.getElementById('search-bar').value.toLowerCase();
+    const cards = document.querySelectorAll('.card');
+    cards.forEach(card => {
+        const cardText = card.textContent.toLowerCase();
+        if (cardText.includes(searchInput)) {
+            card.style.display = 'flex';
+        } else {
+            card.style.display = 'none';
+        }
+    });
+}
+</script>
+{% endblock %}

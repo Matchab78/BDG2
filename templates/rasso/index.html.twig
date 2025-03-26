@@ -1,0 +1,99 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello RassoController!{% endblock %}
+
+{% block body_class %}page-scrollable{% endblock %}
+
+{% block stylesheets %}
+{{ parent() }}
+<style>
+    .page-scrollable .navbar {
+        position: absolute;
+    }
+    .event-card {
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        padding: 15px;
+        margin: 10px 0;
+    }
+    .event-card h3 {
+        margin-top: 0;
+    }
+</style>
+{% endblock %}
+
+{% block body %}
+
+<link rel="shortcut icon" href="favicon.26242483.ico">
+<link rel="stylesheet" href="https://use.typekit.net/eqx3jwb.css">
+<link rel="stylesheet" type="text/css" href="{{ asset('css/base.98fd6c19.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ asset('css/rasso.css') }}">
+
+<section>
+<main>
+    <div class="content">
+        <div class="grid">
+            <div class="grid__item pos-1"><div class="grid__item-img" style="background-image:url({{ asset('css/images/1.dc197a9a.jpg') }});"></div></div>
+            {{ asset('css/images/1.dc197a9a.jpg') }} 
+            <div class="grid__item pos-2"><div class="grid__item-img" style="background-image:url({{ asset('css/images/2.3ca6bb44.jpg') }});"></div></div>
+            <div class="grid__item pos-3"><div class="grid__item-img" style="background-image:url({{ asset('css/images/3.a433b89d.jpg') }});"></div></div>
+            <div class="grid__item pos-4"><div class="grid__item-img" style="background-image:url({{ asset('css/images/4.c6d96be5.jpg') }});"></div></div>
+            <div class="grid__item pos-5"><div class="grid__item-img" style="background-image:url({{ asset('css/images/5.689b68fd.jpg') }});"></div></div>
+            <div class="grid__item pos-6"><div class="grid__item-img" style="background-image:url({{ asset('css/images/6.e96dcfff.jpg') }});"></div></div>
+            <div class="grid__item pos-7"><div class="grid__item-img" style="background-image:url({{ asset('css/images/7.2d66e3ed.jpg') }});"></div></div>
+            <div class="grid__item pos-8"><div class="grid__item-img" style="background-image:url({{ asset('css/images/8.f4323fe0.jpg') }});"></div></div>
+            <div class="grid__item pos-9"><div class="grid__item-img" style="background-image:url({{ asset('css/images/9.c9233dac.jpg') }});"></div></div>
+            <div class="grid__item pos-10"><div class="grid__item-img" style="background-image:url({{ asset('css/images/10.5e22fdc3.jpg') }});"></div></div>
+        </div>
+        <h2 class="content__title no-select">
+            <span>Nos rasso</span>
+            <span class="content__title-sub"></span>
+        </h2>
+    </div>
+</main>
+</section>
+
+<section>
+    <h2>Liste des événements</h2>
+    <div class="event-list">
+        {% for event in events %}
+            <div class="event-card">
+                <h3>{{ event.ville }}</h3>
+                <p><strong>Date:</strong> {{ event.dateEvent|date('d/m/Y') }}</p>
+                <p><strong>Adresse:</strong> {{ event.rue }}, {{ event.cp }} {{ event.ville }}</p>
+                <p><strong>Description:</strong> {{ event.description }}</p>
+                <p><strong>Places disponibles:</strong> {{ event.places }}</p>
+                
+                <button class="btn-participer" onclick="participer('{{ event.id }}')">Participer</button>
+            </div>
+        {% endfor %}
+    </div>
+</section>
+
+<script>
+    function participer(eventId) {
+        alert("Vous participez à l'événement ID: " + eventId);
+        // Ici, tu peux ajouter un appel AJAX pour enregistrer la participation
+    }
+</script>
+
+
+
+        {# <svg class="cursor" width="80" height="80" viewBox="0 0 80 80">
+            <circle class="cursor__inner" cx="40" cy="40" r="20"></circle>
+        </svg> #}
+
+<script>document.documentElement.className = "js";
+
+var supportsCssVars = function supportsCssVars() {
+  var e,
+      t = document.createElement("style");
+  return t.innerHTML = "root: { --tmp-var: bold; }", document.head.appendChild(t), e = !!(window.CSS && window.CSS.supports && window.CSS.supports("font-weight", "var(--tmp-var)")), t.parentNode.removeChild(t), e;
+};
+
+supportsCssVars() || alert("Please view this demo in a modern browser that supports CSS Variables.");</script>
+
+<script src="{{asset('script/fullpage.js')}}"></script>
+<script src="{{asset('script/demo1.151408fb.js')}}"></script>
+
+{% endblock %}

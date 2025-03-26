@@ -1,0 +1,293 @@
+.navbar {
+  position: fixed; /* Assure qu'elle reste en haut même au défilement */
+  top: 0;
+  left: 0;
+  width: 100%; /* Prend toute la largeur */
+  height: 60px; /* Ajuste la hauteur si nécessaire */
+  background-color: rgba(0, 0, 0, 0); /* Fond semi-transparent */
+  color: white;
+  z-index: 1000; /* Plus élevé que tout autre élément */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+}
+
+.hero-section {
+  position: relative;
+  height: 100vh; /* Prend toute la hauteur de l'écran */
+  width: 100%; /* Prend toute la largeur de l'écran */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+section {
+  height: 100vh;
+  /* scroll-snap-align: start; */
+  /* position: relative; */
+  /* overflow: hidden; */
+  /* transition: transform 0.8s ease-out;  Réduire la durée de la transition pour plus de fluidité */
+  background-color: black;
+
+}
+
+/* Style global */
+body {
+  font-family: 'Noto Sans', sans-serif;
+  margin: 0;
+  padding: 0;
+  /* overflow: hidden; */
+}
+
+.image-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.background-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.text_stat {
+  font-size: 2.5rem; /* Taille du texte (ajustez selon vos besoins) */
+  font-weight: bold; /* Met le texte en gras */
+  text-align: center; /* Centre le texte horizontalement si nécessaire */
+  color: rgba(255, 255, 255, 255); /* Assurez-vous que le texte reste lisible */
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: white;
+}
+
+.overlay_stat {
+  position: absolute;
+  top: 10%;
+  left: 7%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: bold;
+}
+
+.overlay_config {
+  position: absolute;
+  bottom: 25%;
+  right: 7%;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: rgb(255, 255, 255);
+  font-weight: bold;
+}
+
+.description_voit {
+  position: absolute; /* Permet de positionner l'élément précisément */
+  top: 50%; /* Centre verticalement l'élément */
+  right: 5%; /* Place l'élément à droite avec une marge de 5% */
+  transform: translateY(-50%); /* Ajuste pour un centrage parfait */
+  font-size: 1.2rem; /* Taille du texte pour une bonne lisibilité */
+  font-weight: bold; /* Texte en gras */
+  color: white; /* Assure une bonne lisibilité */
+  text-align: center; /* Centre le texte à l'intérieur du conteneur */
+  padding: 10px; /* Espace interne autour du texte */
+}
+
+
+.subtitle {
+  font-size: 20px;
+  font-weight: bold;
+  color: #f4d03f;
+  margin-bottom: 10px;
+  position: absolute;
+  top: 40%;
+  left: 10%;
+}
+
+.title {
+  font-size: 50px;
+  font-weight: bold;
+  color: white;
+  position: absolute; /* Positionnement absolu */
+  top: 43%;
+  left: 8%;
+}
+.stats-section {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-left: 800px ;
+}
+
+.stat {
+  margin-bottom: 15px;
+}
+
+.label {
+  font-size: 20px;
+}
+
+.progress-bar {
+  width: 200px;
+  height: 10px;
+  background: #333;
+  border-radius: 5px;
+  overflow: hidden;
+  margin-bottom: 5px;
+}
+
+.progress {
+  height: 100%;
+  background: linear-gradient(90deg, #A36BFD, #6B8AEB);
+  width: 0;
+  transition: width 2s ease-out;
+}
+
+.value {
+  font-size: 18px;
+  color: white;
+}
+
+.description {
+  margin-top: 30px;
+  color: #ddd;
+  font-size: 16px;
+  line-height: 1.5;
+  text-align: center;
+  max-width: 600px;
+}
+
+/* Styles for the customization form options */
+#customization-form {
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 12px;
+  padding: 20px; /* Reduced padding for a compact layout */
+  margin: 10px auto;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  max-width: 700px; /* Reduced width */
+  font-family: 'Arial', sans-serif;
+  position: relative;
+  top: 0;
+  right: 0;
+  left: 0;
+  margin: 50px; /* Align to center horizontally */
+  height: auto; /* Prevent height increase */
+  overflow-y: auto; /* Add scroll if content exceeds height */
+}
+
+#customization-form h2 {
+  font-size: 24px;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+  text-align: left;
+  color: #444;
+}
+
+#customization-form p {
+  text-align: left;
+  font-size: 14px;
+  margin-bottom: 15px; /* Reduced margin */
+  color: #555;
+}
+
+.option-group {
+  margin-bottom: 15px; /* Reduced spacing */
+}
+
+.option-group h3 {
+  font-size: 18px;
+  color: #222;
+  margin-bottom: 8px; /* Reduced spacing */
+  font-weight: bold;
+  text-transform: capitalize;
+}
+
+.option-group label {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px; /* Reduced padding */
+  font-size: 14px; /* Reduced font size */
+  background: #f4f4f4;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  margin-bottom: 8px; /* Reduced spacing */
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.option-group label:hover {
+  background: #e9e9e9;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
+}
+
+.option-group input[type="radio"] {
+  display: none;
+}
+
+.option-group input[type="radio"]:checked + span {
+  font-weight: bold;
+  color: #007BFF;
+}
+
+/* Custom appearance for the selected option */
+.option-group label.selected {
+  border: 2px solid #007BFF;
+  background-color: #eef5ff;
+  box-shadow: 0 4px 8px rgba(0, 123, 255, 0.2);
+}
+
+/* Additional styling for alignment and structure */
+.option-group span {
+  flex-grow: 1;
+  text-align: left;
+  padding-left: 8px; /* Reduced padding */
+}
+
+form {
+  width: 100%; /* Makes the form take the full width of its container */
+  max-width: 600px; /* Optional: Set a max width for the form */
+  margin: 0 auto; /* Center the form */
+  overflow: hidden; /* Prevent horizontal scrolling */
+}
+
+.option-choice {
+  width: 100%; /* Use full width of the form */
+  height: 100px; /* Adjust the height as needed */
+  padding: 10px; /* Optional: Add some padding for better spacing */
+  margin-bottom: 20px; /* Optional: Space between options */
+}
+
+button {
+  background-color: gold;
+  color: black;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  margin-top: 10px;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+}
+
+button:hover {
+  background-color: darkgoldenrod;
+}

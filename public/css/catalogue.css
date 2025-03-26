@@ -1,0 +1,68 @@
+body {
+    background-color: black;
+    padding-top: 300px; 
+}
+
+.search-container {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+#search-bar {
+    padding: 10px;
+    width: 80%;
+    max-width: 400px;
+    border: 1px solid gold;
+    border-radius: 5px;
+    background-color: #222;
+    color: gold;
+}
+
+.card h2, .card p, .button {
+    color: gold;
+}
+
+.card {
+    background-color: #222;
+    border: 1px solid gold;
+    border-radius: 10px;
+    padding: 1rem;
+    margin: 1rem auto; /* Center the card horizontally */
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 40px; /* Add space between cards */
+    max-width: 600px; /* Limit the card width */
+}
+
+.card img {
+    max-width: 150px;
+    border-radius: 10px;
+}
+
+.card:nth-child(odd) img {
+    order: -1; /* Move image to the left for odd cards */
+}
+
+.progress-bar {
+    background-color: #444;
+    border-radius: 5px;
+    overflow: hidden;
+    margin: 0.5rem 0;
+    flex: 1;
+}
+
+.progress-bar div {
+    height: 20px;
+    background-color: gold;
+}
+
+.button {
+    background-color: gold;
+    color: black;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+}

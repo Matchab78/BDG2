@@ -1,0 +1,189 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des contacts{% endblock %}
+
+{% block stylesheets %}
+{{ parent() }}
+<style>
+    body {
+        background-color: black;
+        color: white;
+    }
+
+    .contact-table {
+        width: 100%;
+        border-collapse: separate;
+        border-spacing: 0 8px;
+        margin-top: 20px;
+        background-color: transparent;
+        color: white;
+    }
+
+    .contact-table th,
+    .contact-table td {
+        padding: 15px;
+        text-align: left;
+    }
+
+    .contact-table th {
+        background-color: #1a1a1a;
+        color: gold;
+        font-weight: bold;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        font-size: 0.9em;
+        border-bottom: 2px solid gold;
+    }
+
+    .contact-table tbody tr {
+        background-color: rgba(26, 26, 26, 0.7);
+        transition: all 0.3s ease;
+    }
+
+    .contact-table tbody tr:hover {
+        background-color: rgba(26, 26, 26, 0.9);
+        transform: translateX(5px);
+    }
+
+    .contact-container {
+        padding: 40px;
+        margin-top: 80px;
+        max-width: 1400px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .contact-header {
+        color: gold;
+        margin-bottom: 30px;
+        font-size: 2.5em;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        text-align: center;
+        position: relative;
+        padding-bottom: 15px;
+    }
+
+    .contact-header::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 100px;
+        height: 3px;
+        background: gold;
+    }
+
+    .btn-delete {
+        background-color: transparent;
+        color: #ff4444;
+        border: 2px solid #ff4444;
+        padding: 8px 15px;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        font-weight: bold;
+        text-transform: uppercase;
+        font-size: 0.8em;
+    }
+
+    .btn-delete:hover {
+        background-color: #ff4444;
+        color: white;
+        transform: scale(1.05);
+    }
+
+    .message-cell {
+        max-width: 300px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        color: #cccccc;
+    }
+
+    .date-cell {
+        white-space: nowrap;
+        color: gold;
+        font-weight: bold;
+    }
+
+    .email-cell {
+        color: #4a9eff;
+    }
+
+    .name-cell {
+        font-weight: bold;
+        color: white;
+    }
+
+    .subject-cell {
+        font-style: italic;
+        color: #cccccc;
+    }
+
+    .no-messages {
+        text-align: center;
+        padding: 30px;
+        color: #666;
+        font-style: italic;
+        background-color: rgba(26, 26, 26, 0.7);
+        border-radius: 5px;
+        margin-top: 20px;
+    }
+
+    @media (max-width: 768px) {
+        .contact-container {
+            padding: 20px;
+        }
+
+        .contact-table th {
+            font-size: 0.8em;
+        }
+
+        .message-cell {
+            max-width: 150px;
+        }
+    }
+</style>
+{% endblock %}
+
+{% block body %}
+<div class="contact-container">
+    <h1 class="contact-header">Messages de contact</h1>
+
+    <table class="contact-table">
+        <thead>
+            <tr>
+                <th>Date</th>
+                <th>Nom</th>
+                <th>Email</th>
+                <th>Sujet</th>
+                <th>Message</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for contact in contacts %}
+            <tr>
+                <td class="date-cell">{{ contact.createdAt ? contact.createdAt|date('d/m/Y H:i') : '' }}</td>
+                <td class="name-cell">{{ contact.name }}</td>
+                <td class="email-cell">{{ contact.email }}</td>
+                <td class="subject-cell">{{ contact.subject }}</td>
+                <td class="message-cell" title="{{ contact.message }}">{{ contact.message }}</td>
+                <td>
+                    <form method="post" action="{{ path('app_admin_contact_delete', {'id': contact.id}) }}" onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer ce message ?');">
+                        <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ contact.id) }}">
+                        <button class="btn-delete">Supprimer</button>
+                    </form>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6" class="no-messages">Aucun message trouvé</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

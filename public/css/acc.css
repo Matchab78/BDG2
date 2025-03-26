@@ -1,0 +1,85 @@
+/* CSS de base */
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow: hidden; /*Empêcher le défilement normal */
+    background-color: black;
+}
+
+/* Assurer que chaque section prend toute la hauteur de l'écran */
+/* Assurer que chaque section prend toute la hauteur de l'écran */
+section {
+    height: 100vh;
+    scroll-snap-align: start;
+    /* position: relative; */
+    overflow: hidden;
+    transition: transform 0.8s ease-out;  /* Réduire la durée de la transition pour plus de fluidité */
+    background-color: black;
+
+}
+
+section.voit {
+    height: 50vh;
+    scroll-snap-align: start;
+    /* position: relative; */
+    overflow: hidden;
+    transition: transform 0.8s ease-out;  /* Réduire la durée de la transition pour plus de fluidité */
+    background-color: black;
+
+}
+
+.image-text {
+    font-family: 'ADLaM Display';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 1.2em;
+    font-weight: bold;
+    text-align: center;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.widget {
+    margin-top: 100px;
+    padding: 10px;    
+}
+
+h1{
+    color:white;
+    font-family: 'ADLaM Display';
+
+}
+
+a:visited {
+    color: rgb(255,215,100);
+    background-color: transparent;
+    text-decoration: none;
+  }
+.nouveaute{
+    color: rgb(255,215,100);
+}
+
+a:link{
+    color: rgb(255,215,100);
+    text-decoration:none    
+}
+
+p{
+    color:white;
+    font-family: 'ADLaM Display';
+}
+/* 
+.car-section {
+    display: flex;
+    align-items: center;
+    margin-bottom: 40px;
+}
+
+.car-section:nth-child(even) {
+    flex-direction: row-reverse; Alterne l'ordre 
+} */
+

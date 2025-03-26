@@ -1,0 +1,135 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Détail Voiture{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/detailVoit.css') }}">
+{% endblock %}
+
+{% block body %}
+<section class="hero-section">
+    <div class="image-container">
+        <img src="{{ asset('css/images/photoVoit/huracan1.jpeg') }}" alt="Lamborghini Huracan" class="background-image">
+        <div class="overlay">
+            <span class="subtitle">DÉCOUVREZ</span>
+            <h1 class="title">{{ voiture.description }}</h1>
+        </div>
+    </div>
+</section>
+
+<section class="hero-section">
+    <div class="image-container">
+        <img src="{{ asset('css/images/photoVoit/huracan2.jpg') }}" alt="Lamborghini Huracan" class="background-image">
+        <div class="overlay_stat">
+        <span class="text_stat">Statistiques</span>
+            <div class="stat">
+                <span class="label">Vitesse max</span>
+                <div class="progress-bar">
+                    <div class="progress" style="width: 80%;"></div>
+                </div>
+                <span class="value">{{ voiture.vitesse }} km/h</span>
+            </div>
+            <div class="stat">
+                <span class="label">Accélération</span>
+                <div class="progress-bar">
+                    <div class="progress" style="width: 75%;"></div>
+                </div>
+                <span class="value">0 à 100 en {{ voiture.acceleration }}s</span>
+            </div>
+            <div class="stat">
+                <span class="label">Puissance</span>
+                <div class="progress-bar">
+                    <div class="progress" style="width: 80%;"></div>
+                </div>
+                <span class="value">{{ voiture.chevaux }} ch</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="hero-section">
+    <div class="image-container">
+        <img src="{{ asset('css/images/photoVoit/huracan3.jpg') }}" alt="Lamborghini Huracan" class="background-image">
+        <div class="overlay_config">
+            <span class="subtitle">CONFIGURATION</span>
+            <h1 class="title">Configurez votre {{ voiture.description }} : </h1>
+        </div>
+    </div>
+
+<!-- Formulaire de personnalisation de voiture -->
+<div id="customization-form">
+    <h2>OPTION</h2>
+    <p>sélectionner</p>
+    <form>
+        <div class="option-choice">
+            <h3>Intérieur:</h3>
+            <label><input type="radio" name="interior" value="cuir" onchange="updateSelections()"> Cuir</label>
+            <label><input type="radio" name="interior" value="alcantara" onchange="updateSelections()"> Alcantara</label>
+        </div>
+
+        <div class="option-choice">
+            <h3>Jantes:</h3>
+            <label><input type="radio" name="wheels" value="carbone" onchange="updateSelections()"> Carbone</label>
+            <label><input type="radio" name="wheels" value="acier" onchange="updateSelections()"> Acier</label>
+        </div>
+
+        <div class="option-choice">
+            <h3>Volant:</h3>
+            <label><input type="radio" name="steering" value="sport" onchange="updateSelections()"> Sport</label>
+            <label><input type="radio" name="steering" value="confort" onchange="updateSelections()"> Confort</label>
+        </div>
+
+        <div class="option-choice">
+            <h3>Toit:</h3>
+            <label><input type="radio" name="roof" value="carbone" onchange="updateSelections()"> Carbone</label>
+            <label><input type="radio" name="roof" value="ouvrant" onchange="updateSelections()"> Ouvrant</label>
+        </div>
+
+        <div class="option-choice">
+            <h3>CarPlay:</h3>
+            <label><input type="radio" name="carplay" value="oui" onchange="updateSelections()"> Oui</label>
+            <label><input type="radio" name="carplay" value="non" onchange="updateSelections()"> Non</label>
+        </div>
+        
+        <div class="option-choice">
+            <h3>Pack:</h3>
+            <label><input type="radio" name="pack" value="sport" onchange="updateSelections()"> Sport</label>
+            <label><input type="radio" name="pack" value="normal" onchange="updateSelections()"> Normal</label>
+        </div>
+
+        <button type="submit">Valider mes choix</button>
+    </form>
+</div>
+
+<script>
+    function updateSelections() {
+        const interior = document.querySelector('input[name="interior"]:checked')?.value || 'Aucune sélection';
+        const wheels = document.querySelector('input[name="wheels"]:checked')?.value || 'Aucune sélection';
+        const steering = document.querySelector('input[name="steering"]:checked')?.value || 'Aucune sélection';
+        const roof = document.querySelector('input[name="roof"]:checked')?.value || 'Aucune sélection';
+        const carplay = document.querySelector('input[name="carplay"]:checked')?.value || 'Aucune sélection';
+
+        
+    }
+</script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        // Ajouter la classe transparent à la navbar
+        const navbar = document.querySelector('.navbar');
+        if (navbar) {
+            navbar.classList.add('navbar-transparent');
+        }
+
+        const progressBars = document.querySelectorAll('.progress');
+        progressBars.forEach(bar => {
+            const targetWidth = bar.style.width;
+            bar.style.width = '0';
+            setTimeout(() => {
+                bar.style.width = targetWidth;
+            }, 500);
+        });
+    });
+</script>
+
+{% endblock %}

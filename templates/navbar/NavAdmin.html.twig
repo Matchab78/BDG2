@@ -1,0 +1,28 @@
+<link rel="stylesheet" href="{{asset('css/navbar.css')}}">
+
+<nav class="navbar">
+    <div class="logo-img">
+        <a href="{{ path('app_accueil') }}"><img src="{{asset('css/images/logoacc1.png')}}" class="logo-img"></a>
+    </div>
+    <div class="nav-links">
+        <a href="{{ path('app_accueil') }}" class="nav-item">ACCUEIL</a>
+        <a href="{{ path('app_voitures')}}" class="nav-item">VOITURES</a>
+        <a href="{{ path('app_rasso') }}" class="nav-item">NOS EVENEMENTS</a>
+        <a href="{{ path('app_contact') }}" class="nav-item">CONTACT</a>
+    </div>
+    <div class="connexion mr-3">
+    <a href="{{ path('app_login') }}"><img src="{{asset('css/images/connexion.png')}}" class="co-img" width="45px" ></a>
+    </div>
+    <div class="menu-toggle" onclick="toggleDropdown()">
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+    </div>
+    <div class="dropdown-menu" id="dropdown-menu">
+        <a href="{{ path('app_admin_voitures_index') }}" class="dropdown-item">Admin voiture</a>
+        <a href="{{ path('app_admin_evenement_index') }}" class="dropdown-item">Admin event</a>
+        <a href="{{ path('app_admin_contact_index') }}" class="dropdown-item">Admin contact</a>
+    </div>
+</nav>
+
+<script src="{{asset('script/publicNav.js')}}"></script>
