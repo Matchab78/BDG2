@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Etat index{% endblock %}
+
+{% block body %}
+
+{% block stylesheets %}
+<link rel="stylesheet" href="{{asset('css/adminEtat.css')}}">
+{% endblock %}
+    <h1>Etat index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Type</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for etat in etats %}
+            <tr>
+                <td>{{ etat.id }}</td>
+                <td>{{ etat.type }}</td>
+                <td>
+                    <a href="{{ path('app_etat_show', {'id': etat.id}) }}">show</a>
+                    <a href="{{ path('app_etat_edit', {'id': etat.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_etat_new') }}">Create new</a>
+{% endblock %}

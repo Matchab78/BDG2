@@ -1,0 +1,94 @@
+
+/* Style global */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 20px;
+}
+
+/* Titre */
+h1 {
+    text-align: center;
+    color: #333;
+    font-size: 28px;
+    margin-bottom: 20px;
+}
+
+/* Table Style */
+.table {
+    width: 80%;
+    margin: 0 auto;
+    border-collapse: collapse;
+    background: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+/* En-tête du tableau */
+.table thead {
+    background-color: #222;
+    color: white;
+    text-transform: uppercase;
+}
+
+.table th, .table td {
+    padding: 15px;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+}
+
+/* Ligne hover */
+.table tbody tr:hover {
+    background-color: #f1f1f1;
+    transition: 0.3s;
+}
+
+/* Boutons d'actions */
+.table a {
+    text-decoration: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.table a[href*="show"] {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.table a[href*="edit"] {
+    background-color: #ff0000;
+    color: white;
+}
+
+.table a:hover {
+    opacity: 0.8;
+}
+
+/* Bouton "Create new" */
+a[href*="new"] {
+    display: block;
+    width: fit-content;
+    margin: 20px auto;
+    padding: 10px 15px;
+    background-color: #007BFF;
+    color: white;
+    font-weight: bold;
+    border-radius: 5px;
+    text-decoration: none;
+    text-align: center;
+}
+
+a[href*="new"]:hover {
+    background-color: #0056b3;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .table {
+        width: 100%;
+    }
+}
