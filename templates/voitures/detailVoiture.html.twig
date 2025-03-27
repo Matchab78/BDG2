@@ -43,6 +43,9 @@
                 </div>
                 <span class="value">{{ voiture.chevaux }} ch</span>
             </div>
+            <div class="stat">
+                <span class="value">Etat: {{ voiture.etat ? voiture.etat.getType() : 'Non défini' }}</span>
+            </div>
         </div>
     </div>
 </section>
