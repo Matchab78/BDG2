@@ -36,29 +36,42 @@
 
 <script>
 
-//Laisser les commentaire c pour comprendre comment fonctionne la barre de recherche
 /**
  * Filters the displayed cards based on the search input.
  * @param {string} searchInput the search input string
  */
 function filterCards() {
+    // Récupère la valeur de la barre de recherche et la convertit en minuscules
     const searchInput = document.getElementById('search-bar').value.toLowerCase();
+
+    // Récupère la valeur sélectionnée dans le filtre d'état et la convertit en minuscules
     const selectedEtat = document.getElementById('etat-filter').value.toLowerCase();
+
+    // Sélectionne toutes les cartes avec la classe 'card'
     const cards = document.querySelectorAll('.card');
 
+    // Parcourt chaque carte pour appliquer le filtre
     cards.forEach(card => {
+        // Récupère le contenu textuel de la carte et le convertit en minuscules
         const cardText = card.textContent.toLowerCase();
+
+        // Récupère le texte de l'état de la carte et le convertit en minuscules
         const etatText = card.querySelector('.etat').textContent.toLowerCase();
 
+        // Vérifie si le texte de la carte contient la recherche
         const matchesSearch = cardText.includes(searchInput);
+
+        // Vérifie si l'état de la carte correspond à l'état sélectionné ou si aucun état n'est sélectionné
         const matchesEtat = selectedEtat === "" || etatText.includes(selectedEtat);
 
+        // Affiche la carte si elle correspond aux deux critères (recherche et état), sinon la masque
         card.style.display = (matchesSearch && matchesEtat) ? 'flex' : 'none';
     });
 }
 
-// Applique le filtre au clic sur une option
+// Ajoute un écouteur d'événement pour appliquer le filtre lorsque l'utilisateur change la sélection dans le filtre d'état
 document.getElementById('etat-filter').addEventListener('change', filterCards);
+
 </script>
 
 

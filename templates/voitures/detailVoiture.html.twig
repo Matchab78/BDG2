@@ -44,6 +44,10 @@
                 <span class="value">{{ voiture.chevaux }} ch</span>
             </div>
             <div class="stat">
+            <!-- Utilise une expression conditionnelle pour vérifier si l'état de la voiture est défini -->
+            Etat:
+            <!-- Si voiture.etat existe, appelle la méthode getType() pour obtenir le type d'état -->
+            <!-- Sinon, affiche 'Non défini' -->
                 <span class="value">Etat: {{ voiture.etat ? voiture.etat.getType() : 'Non défini' }}</span>
             </div>
         </div>
