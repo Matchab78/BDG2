@@ -6,6 +6,7 @@ use App\Entity\Etat;
 use App\Entity\Voitures;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class VoituresType extends AbstractType
@@ -26,7 +27,12 @@ class VoituresType extends AbstractType
             ->add('boiteAuto')
             ->add('conso')
             ->add('Co2')
-            ->add('etat')
+            ->add('etat', EntityType::class, [
+                'class' => Etat::class,
+                'choice_label' => 'type', // Assurez-vous que la classe Etat a une propriété "type"
+                'placeholder' => 'Sélectionnez un état',
+                'required' => false,
+            ])
         ;
     }
 

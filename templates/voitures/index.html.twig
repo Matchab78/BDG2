@@ -10,17 +10,25 @@
 
 <div class="search-container">
     <input type="text" id="search-bar" placeholder="Rechercher une voiture..." onkeyup="filterCards()">
+    <select id="etat-filter" onchange="filterCards()">
+        <option value="">Tous les états</option>
+        <option value="Neuf">Neuf</option>
+        <option value="Comme neuf">Comme neuf</option>
+        <option value="Occasion bon état">Occasion bon état</option>
+        <option value="Occasion état moyen">Occasion état moyen</option>
+        <option value="Épave">Épave</option>
+    </select>
 </div>
 
 {% for voiture in voitures %}
 <div class="card">
     <h2>{{ voiture.description }}</h2>
-    <img src="{{ asset(  voiture.image  ) }}" alt="Car Image"> {# il faut au plus vite ajouter les vrai image #} 
+    <img src="{{ asset(  voiture.image  ) }}" alt="Car Image"> 
     <div class="progress-bar">
         <div style="width: 45%;"></div>
     </div>
     <p>Vitesse: {{ voiture.vitesse }} KM/H</p>
-    <p>Etat: {{ voiture.etat ? voiture.etat.getType() : 'Non défini' }}</p>
+    <p class="etat">Etat: {{ voiture.etat ? voiture.etat.getType() : 'Non défini' }}</p>
     <p>Puissance: {{ voiture.chevaux }} CHV</p>
     <a href="{{ path('detailVoit', {'id': voiture.id}) }}" class="button" style="text-decoration: none;">Savoir plus</a>
 </div>
@@ -35,15 +43,92 @@
  */
 function filterCards() {
     const searchInput = document.getElementById('search-bar').value.toLowerCase();
+    const selectedEtat = document.getElementById('etat-filter').value.toLowerCase();
     const cards = document.querySelectorAll('.card');
+
     cards.forEach(card => {
         const cardText = card.textContent.toLowerCase();
-        if (cardText.includes(searchInput)) {
-            card.style.display = 'flex';
-        } else {
-            card.style.display = 'none';
-        }
+        const etatText = card.querySelector('.etat').textContent.toLowerCase();
+
+        const matchesSearch = cardText.includes(searchInput);
+        const matchesEtat = selectedEtat === "" || etatText.includes(selectedEtat);
+
+        card.style.display = (matchesSearch && matchesEtat) ? 'flex' : 'none';
     });
 }
+
+// Applique le filtre au clic sur une option
+document.getElementById('etat-filter').addEventListener('change', filterCards);
 </script>
+
+
+<h2>📊 Statistiques des voitures par état</h2>
+<table class="table-stats">
+    <thead>
+        <tr>
+            <th>État</th>
+            <th>Nombre de voitures</th>
+        </tr>
+    </thead>
+    <tbody id="stats-body">
+        <tr style="background-color: #4CAF50; color: white;"><td>Neuf</td><td id="neuf-count">0</td></tr>
+        <tr style="background-color: #8BC34A; color: black;"><td>Comme neuf</td><td id="comme-neuf-count">0</td></tr>
+        <tr style="background-color: #FFC107; color: black;"><td>Occasion bon état</td><td id="occasion-bon-count">0</td></tr>
+        <tr style="background-color: #FF9800; color: white;"><td>Occasion état moyen</td><td id="occasion-moyen-count">0</td></tr>
+        <tr style="background-color: #F44336; color: white;"><td>Épave</td><td id="epave-count">0</td></tr>
+    </tbody>
+</table>
+
+<style>
+    .table-stats {
+        width: 50%;
+        margin-top: 20px;
+        border-collapse: collapse;
+        text-align: center;
+        font-size: 18px;
+    }
+    .table-stats th, .table-stats td {
+        border: 1px solid black;
+        padding: 10px;
+    }
+    .table-stats th {
+        background-color: #333;
+        color: white;
+    }
+</style>
+
+<script>
+function updateStats() {
+    const stats = {
+        'neuf': 0,
+        'comme neuf': 0,
+        'occasion bon état': 0,
+        'occasion état moyen': 0,
+        'épave': 0
+    };
+
+    document.querySelectorAll('.card').forEach(card => {
+        if (card.style.display !== 'none') { 
+            const etatText = card.querySelector('.etat').textContent.toLowerCase().replace('etat: ', '');
+            if (stats.hasOwnProperty(etatText)) {
+                stats[etatText]++;
+            }
+        }
+    });
+
+    document.getElementById('neuf-count').textContent = stats['neuf'];
+    document.getElementById('comme-neuf-count').textContent = stats['comme neuf'];
+    document.getElementById('occasion-bon-count').textContent = stats['occasion bon état'];
+    document.getElementById('occasion-moyen-count').textContent = stats['occasion état moyen'];
+    document.getElementById('epave-count').textContent = stats['épave'];
+}
+
+// Mettre à jour les stats après filtrage
+document.getElementById('etat-filter').addEventListener('change', updateStats);
+document.getElementById('search-bar').addEventListener('keyup', updateStats);
+
+// Exécuter une première fois
+window.onload = updateStats;
+</script>
+
 {% endblock %}
