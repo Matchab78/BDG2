@@ -2,6 +2,7 @@
 
 namespace App\Form;
 
+use App\Entity\Etat;
 use App\Entity\Voitures;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -25,6 +26,7 @@ class VoituresType extends AbstractType
             ->add('boiteAuto')
             ->add('conso')
             ->add('Co2')
+            ->add('etat')
         ;
     }
 

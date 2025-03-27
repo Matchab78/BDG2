@@ -61,6 +61,9 @@ class Voitures
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $catVoitures = null;
 
+    #[ORM\ManyToOne(inversedBy: 'voitures')]
+    private ?Etat $etat = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -244,4 +247,17 @@ class Voitures
 
         return $this;
     }
+
+    public function getEtat(): ?Etat
+    {
+        return $this->etat;
+    }
+
+    public function setEtat(?Etat $etat): static
+    {
+        $this->etat = $etat;
+
+        return $this;
+    }
 }
+

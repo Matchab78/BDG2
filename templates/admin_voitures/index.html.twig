@@ -23,6 +23,7 @@
                 <th>BoiteAuto</th>
                 <th>Conso</th>
                 <th>Co2</th>
+                <th>État</th>
                 <th>actions</th>
             </tr>
         </thead>
@@ -43,6 +44,7 @@
                 <td>{{ voiture.boiteAuto }}</td>
                 <td>{{ voiture.conso }}</td>
                 <td>{{ voiture.Co2 }}</td>
+                <td>{{ voiture.etat.type }}</td>
                 <td>
                     <a href="{{ path('app_admin_voitures_show', {'id': voiture.id}) }}">montrer</a>
                     <a href="{{ path('app_admin_voitures_edit', {'id': voiture.id}) }}">modifier</a>
@@ -56,5 +58,5 @@
         </tbody>
     </table>
 
-    <a href="{{ path('app_admin_voitures_new') }}">Crée une voiture</a>
+    <a href="{{ path('app_admin_voitures_new') }}" class="custom-button">Créer une voiture</a>
 {% endblock %}

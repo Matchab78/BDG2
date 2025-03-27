@@ -3,9 +3,11 @@
 {% block title %}New Voitures{% endblock %}
 
 {% block body %}
+<link rel="stylesheet" href="{{ asset('css/createV.css') }}">
+
     <h1>Create new Voitures</h1>
 
     {{ include('admin_voitures/_form.html.twig') }}
 
-    <a href="{{ path('app_admin_voitures_index') }}">back to list</a>
+<a href="{{ path('app_admin_voitures_index') }}" class="custom-button">Retour à la liste</a>
 {% endblock %}

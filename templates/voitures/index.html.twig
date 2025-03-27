@@ -19,12 +19,10 @@
     <div class="progress-bar">
         <div style="width: 45%;"></div>
     </div>
-    <p>Speed: {{ voiture.vitesse }} KM/H</p>
-    <div class="progress-bar">
-        <div style="width: 80%;"></div>
-    </div>
-    <p>Horsepower: {{ voiture.chevaux }} CHV</p>
-    <a href="{{ path('detailVoit', {'id': voiture.id}) }}" class="button" style="text-decoration: none;">Learn More</a>
+    <p>Vitesse: {{ voiture.vitesse }} KM/H</p>
+    <p>Etat: {{ voiture.etat ? voiture.etat.getType() : 'Non défini' }}</p>
+    <p>Puissance: {{ voiture.chevaux }} CHV</p>
+    <a href="{{ path('detailVoit', {'id': voiture.id}) }}" class="button" style="text-decoration: none;">Savoir plus</a>
 </div>
 {% endfor %}
 
